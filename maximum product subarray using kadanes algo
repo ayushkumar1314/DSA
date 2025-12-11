@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        if (nums.empty()) return 0;
+
+        int n = nums.size();
+        int max_prod = nums[0];
+        int min_prod = nums[0];
+        int ans = nums[0];
+
+        for (int i = 1; i < n; ++i) {
+            int x = nums[i];
+            // if x is negative, multiplying swaps roles of max and min
+            if (x < 0) swap(max_prod, min_prod);
+
+            // either start new at x or extend previous product
+            max_prod = max(x, max_prod * x);
+            min_prod = min(x, min_prod * x);
+
+            ans = max(ans, max_prod);
+        }
+
+        return ans;
+    }
+};
+
+// Example usage:
+// int main() {
+//     Solution s;
+//     vector<int> v = {2, 3, -2, 4};
+//     cout << s.maxProduct(v) << '\n'; // prints 6
+//     return 0;
+// }
