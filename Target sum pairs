@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int>arr(n);
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
+    sort(arr.begin(),arr.end());
+    int i=0,j=n-1,cnt=0;
+    int target;
+    cin>>target;
+    while(i<j){
+        int x=arr[i]+arr[j];
+        if(x==target){
+            cnt++;
+            i++;j--;
+        }
+        else if(x>target )
+        j--;
+        else
+        i++;
+    }
+    cout<<cnt;
+}
