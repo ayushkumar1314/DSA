@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> v(n + m);
+    vector<int> u(m);
+
+    // input first array
+    for (int i = 0; i < n; i++)
+        cin >> v[i];
+
+    // input second array
+    for (int i = 0; i < m; i++)
+        cin >> u[i];
+
+    // pointers
+    int i = n - 1;      // last element of v (original)
+    int j = m - 1;      // last element of u
+    int k = n + m - 1;  // last position of merged array
+
+    // merge from back
+    while (i >= 0 && j >= 0) {
+        if (v[i] > u[j])
+            v[k--] = v[i--];
+        else
+            v[k--] = u[j--];
+    }
+
+    // copy remaining elements of u (if any)
+    while (j >= 0)
+        v[k--] = u[j--];
+
+    // print result
+    for (int x : v)
+        cout << x << " ";
+}
