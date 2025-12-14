@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin>>n;
+	vector<int>v(n);
+	for(int i=0;i<n;i++)
+	cin>>v[i];
+	int sscore=0,dscore=0;
+	int i=0,j=n-1;
+	bool stern=true;//to ensure whose turn it is
+	while(i<=j){
+	    if(stern){
+	        if(v[i]>v[j])
+	        {sscore+=v[i];
+	          i++;  
+	        }
+	        else{
+	            sscore+=v[j];
+	            j--;
+	        }
+	        stern=false;
+	        
+	    }
+	    else{
+	        if(v[i]>v[j]){
+	            dscore+=v[i];
+	            i++;
+	        }
+	        else{
+	            dscore+=v[j];
+	            j--;
+	        }
+	        stern=true;
+	    }
+	}
+	cout<<sscore<<" "<<dscore;
+	return 0;
+
+}
