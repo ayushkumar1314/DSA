@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n,m;
+	cin>>n>>m;
+	vector<int>v(n);
+	vector<int>u(m);
+	for(int i=0;i<n;i++)
+	cin>>v[i];
+	for(int i=0;i<m;i++)
+	cin>>u[i];
+	vector<int>w(m+n);
+	int i=0,j=0,k=0;
+	while(i<m and j<n){
+	    if(u[i]<v[j]){
+	        w[k]=u[i];
+	        k++;i++;
+	    }
+	    else{
+	        w[k]=v[j];
+	        k++;j++;
+	    }
+	}
+	while(i<m){
+	    w[k]=u[i];
+	    k++;i++;
+	}
+	while(j<n){
+	    w[k]=v[j];
+	    k++;j++;
+	}
+	
+
+}
