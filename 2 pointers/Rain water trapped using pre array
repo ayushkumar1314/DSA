@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+     int n=height.size();
+     vector<int>pre(n);
+        pre[0]=height[0];
+        for(int i=1;i<n;i++){
+            pre[i]=max(pre[i-1],height[i]);
+        }
+        int suff=height[n-1];
+        int total=0;
+        for(int i=n-2;i>0;i--){
+            int hgt=min(pre[i-1],suff);
+      if(hgt>height[i])total+=hgt-height[i];
+            suff=max(suff,height[i]);
+        }
+        return total;
+    }
+};
